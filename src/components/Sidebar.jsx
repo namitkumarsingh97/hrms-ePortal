@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("role");
-    navigate("/");
+    navigate("/login");
   };
 
   return (

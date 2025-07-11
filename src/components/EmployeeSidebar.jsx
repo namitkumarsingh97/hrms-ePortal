@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const EmployeeSidebar = () => {
@@ -9,7 +9,7 @@ const EmployeeSidebar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("role");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
