@@ -1,0 +1,1 @@
+Tech Profile - ChatGPT - https://chatgpt.com/share/686e6ce6-f9b0-8006-aede-29deeac5480d
