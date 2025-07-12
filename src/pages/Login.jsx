@@ -91,14 +91,14 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="text-right mt-1">
+            {/* <div className="text-right mt-1">
               <button
                 onClick={() => alert("Password recovery coming soon!")}
                 className="text-sm text-[#f7941e] hover:underline"
               >
                 Forgot password?
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* Error */}
