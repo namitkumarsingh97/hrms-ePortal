@@ -2,24 +2,24 @@ import React from "react";
 
 export default function Reports() {
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Reports</h1>
-        <select className="border px-4 py-2 rounded">
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-xl md:text-2xl font-bold">Reports</h1>
+        <select className="border px-3 md:px-4 py-2 rounded text-sm md:text-base w-full sm:w-auto">
           <option>July 2025</option>
           <option>June 2025</option>
           <option>May 2025</option>
         </select>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         <Card title="Total Employees" value="32" />
         <Card title="Avg. Attendance (%)" value="89%" />
         <Card title="Leaves Taken" value="58" />
         <Card title="Late Logins" value="12" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <ReportWidget title="Attendance Overview">
           <div className="h-40 flex items-center justify-center text-gray-400">
             [Attendance Chart Here]

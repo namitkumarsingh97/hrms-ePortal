@@ -44,28 +44,28 @@ const EmployeeLeaves = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-2xl font-bold">My Leaves</h1>
+    <div className="space-y-6 md:space-y-8">
+      <h1 className="text-xl md:text-2xl font-bold">My Leaves</h1>
 
       {/* Leave Balance Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white shadow p-4 rounded">
-          <h2 className="font-semibold text-lg">Casual Leave</h2>
-          <p className="text-2xl text-blue-500 font-bold">4</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+        <div className="bg-white shadow p-3 md:p-4 rounded">
+          <h2 className="font-semibold text-base md:text-lg">Casual Leave</h2>
+          <p className="text-xl md:text-2xl text-blue-500 font-bold">4</p>
         </div>
-        <div className="bg-white shadow p-4 rounded">
-          <h2 className="font-semibold text-lg">Sick Leave</h2>
-          <p className="text-2xl text-green-500 font-bold">3</p>
+        <div className="bg-white shadow p-3 md:p-4 rounded">
+          <h2 className="font-semibold text-base md:text-lg">Sick Leave</h2>
+          <p className="text-xl md:text-2xl text-green-500 font-bold">3</p>
         </div>
-        <div className="bg-white shadow p-4 rounded">
-          <h2 className="font-semibold text-lg">Privilege/ Earned Leave</h2>
-          <p className="text-2xl text-purple-500 font-bold">6</p>
+        <div className="bg-white shadow p-3 md:p-4 rounded">
+          <h2 className="font-semibold text-base md:text-lg">Privilege/ Earned Leave</h2>
+          <p className="text-xl md:text-2xl text-purple-500 font-bold">6</p>
         </div>
       </div>
 
       {/* Apply for Leave */}
-      <div className="bg-white p-6 rounded shadow space-y-4">
-        <h2 className="text-xl font-semibold mb-2">Apply for Leave</h2>
+      <div className="bg-white p-4 md:p-6 rounded shadow space-y-4">
+        <h2 className="text-lg md:text-xl font-semibold mb-2">Apply for Leave</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block font-medium mb-1">Leave Type</label>
@@ -110,39 +110,41 @@ const EmployeeLeaves = () => {
         </div>
         <button
           onClick={handleApplyLeave}
-          className="bg-[#f7941e] text-white px-4 py-2 rounded hover:bg-orange-600"
+          className="w-full sm:w-auto bg-[#f7941e] text-white px-4 py-2 rounded hover:bg-orange-600 text-sm md:text-base"
         >
           Submit Leave Request
         </button>
       </div>
 
       {/* Leave History */}
-      <div className="bg-white p-6 rounded shadow">
-        <h2 className="text-lg font-bold mb-4">Leave History</h2>
-        <table className="w-full text-left border text-sm">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-2 border">Type</th>
-              <th className="p-2 border">From</th>
-              <th className="p-2 border">To</th>
-              <th className="p-2 border">Reason</th>
-              <th className="p-2 border">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {leaveHistory.map((leave, i) => (
-              <tr key={i}>
-                <td className="p-2 border capitalize">{leave.type}</td>
-                <td className="p-2 border">{leave.from}</td>
-                <td className="p-2 border">{leave.to}</td>
-                <td className="p-2 border">{leave.reason}</td>
-                <td className="p-2 border font-semibold text-blue-600">
-                  {leave.status}
-                </td>
+      <div className="bg-white p-4 md:p-6 rounded shadow">
+        <h2 className="text-base md:text-lg font-bold mb-4">Leave History</h2>
+        <div className="overflow-x-auto -mx-4 md:mx-0">
+          <table className="w-full text-left border text-xs md:text-sm min-w-full">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="p-2 border text-xs md:text-sm">Type</th>
+                <th className="p-2 border text-xs md:text-sm">From</th>
+                <th className="p-2 border text-xs md:text-sm">To</th>
+                <th className="p-2 border text-xs md:text-sm">Reason</th>
+                <th className="p-2 border text-xs md:text-sm">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {leaveHistory.map((leave, i) => (
+                <tr key={i}>
+                  <td className="p-2 border capitalize text-xs md:text-sm">{leave.type}</td>
+                  <td className="p-2 border text-xs md:text-sm">{leave.from}</td>
+                  <td className="p-2 border text-xs md:text-sm">{leave.to}</td>
+                  <td className="p-2 border text-xs md:text-sm">{leave.reason}</td>
+                  <td className="p-2 border font-semibold text-blue-600 text-xs md:text-sm">
+                    {leave.status}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
