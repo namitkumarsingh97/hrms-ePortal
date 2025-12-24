@@ -17,7 +17,7 @@ const AdminAutomationStudio = () => {
             <div className="space-y-2">
               <div className="border rounded p-3">
                 <div className="font-medium text-sm">Leave Request Approval</div>
-                <div className="text-xs text-gray-500 mt-1">Trigger: Leave request submitted → Notify manager → Auto-approve if < 3 days</div>
+                <div className="text-xs text-gray-500 mt-1">Trigger: Leave request submitted → Notify manager → Auto-approve if &lt; 3 days</div>
               </div>
               <div className="border rounded p-3">
                 <div className="font-medium text-sm">Onboarding Checklist</div>
@@ -45,7 +45,7 @@ const AdminAutomationStudio = () => {
               </button>
               <button className="w-full text-left border rounded p-3 hover:bg-gray-50">
                 <div className="font-medium text-sm">Expense Approval</div>
-                <div className="text-xs text-gray-500 mt-1">3 steps • Auto-approve < $500</div>
+                <div className="text-xs text-gray-500 mt-1">3 steps • Auto-approve &lt; $500</div>
               </button>
               <button className="w-full text-left border rounded p-3 hover:bg-gray-50">
                 <div className="font-medium text-sm">Asset Allocation</div>
@@ -74,9 +74,9 @@ const AdminAutomationStudio = () => {
           <div className="border rounded-lg p-4">
             <div className="font-semibold text-gray-900 mb-2">Expense Policy</div>
             <div className="text-xs text-gray-600 space-y-1">
-              <div>• Auto-approve < $500</div>
-              <div>• Receipt required > $100</div>
-              <div>• Manager approval > $1000</div>
+              <div>• Auto-approve &lt; $500</div>
+              <div>• Receipt required &gt; $100</div>
+              <div>• Manager approval &gt; $1000</div>
             </div>
             <button className="mt-3 text-xs bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700">
               Edit Policy
@@ -110,10 +110,10 @@ const AdminAutomationStudio = () => {
               <span className="bg-green-100 text-green-800 px-2 py-1 rounded">HR</span>
               <span className="text-gray-500 ml-4">Average time: 2.5 days</span>
             </div>
-            <div className="mt-3 text-sm text-blue-600">💡 Optimization: Auto-approve leaves < 3 days → Save 1.2 days average</div>
+            <div className="mt-3 text-sm text-blue-600">💡 Optimization: Auto-approve leaves &lt; 3 days → Save 1.2 days average</div>
           </div>
           <div className="border rounded-lg p-4">
-            <div className="font-semibold text-gray-900 mb-3">Current Approval Chain: Expense > $1000</div>
+            <div className="font-semibold text-gray-900 mb-3">Current Approval Chain: Expense &gt; $1000</div>
             <div className="flex items-center gap-2 text-sm">
               <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">Employee</span>
               <span>→</span>
@@ -137,7 +137,7 @@ const AdminAutomationStudio = () => {
             <div className="font-semibold text-gray-900 mb-2">Alert Rules</div>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between items-center">
-                <span>Leave balance < 5 days</span>
+                <span>Leave balance &lt; 5 days</span>
                 <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Active</span>
               </div>
               <div className="flex justify-between items-center">
@@ -145,7 +145,7 @@ const AdminAutomationStudio = () => {
                 <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Active</span>
               </div>
               <div className="flex justify-between items-center">
-                <span>Expense > $2000 pending > 7 days</span>
+                <span>Expense &gt; $2000 pending &gt; 7 days</span>
                 <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Active</span>
               </div>
             </div>
@@ -153,7 +153,7 @@ const AdminAutomationStudio = () => {
           <div className="border rounded-lg p-4">
             <div className="font-semibold text-gray-900 mb-2">Recent Alerts</div>
             <div className="space-y-2 text-sm text-gray-600">
-              <div>• 3 employees have < 5 days leave balance</div>
+              <div>• 3 employees have &lt; 5 days leave balance</div>
               <div>• 2 performance reviews overdue by 5+ days</div>
               <div>• 1 expense request pending for 8 days</div>
             </div>
