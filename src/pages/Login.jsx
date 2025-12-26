@@ -1,9 +1,11 @@
+"use client";
+
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { FaUserTie, FaUser, FaGlobe } from "react-icons/fa";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [role, setRole] = useState("admin");
   const [employeeId, setEmployeeId] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ export default function Login() {
     setError("");
     
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/api/auth/login`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,9 +35,9 @@ export default function Login() {
 
         // Redirect based on role
         if (data.user.role === "global_admin" || data.user.role === "admin") {
-          navigate("/admin/dashboard");
+          router.push("/admin/dashboard");
         } else {
-          navigate("/employee/dashboard");
+          router.push("/employee/dashboard");
         }
       } else {
         setError(data.message || "Invalid credentials. Please try again.");
@@ -52,7 +54,7 @@ export default function Login() {
       <header className="bg-black text-white p-4 md:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <h1
           className="text-lg md:text-xl font-bold text-[#f7941e] cursor-pointer"
-          onClick={() => navigate("/")}
+          onClick={() => router.push("/")}
         >
           NeuroHR
         </h1>

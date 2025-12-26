@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const PaymentSuccess = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleLoginClick = () => {
-    navigate("/login");
+    router.push("/login");
   };
 
   return (
@@ -13,7 +15,7 @@ const PaymentSuccess = () => {
       <header className="bg-black text-white p-6 flex justify-between items-center">
         <h1
           className="text-xl font-bold text-[#f7941e] cursor-pointer"
-          onClick={() => navigate("/")}
+          onClick={() => router.push("/")}
         >
           NeuroHR
         </h1>

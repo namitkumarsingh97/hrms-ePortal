@@ -97,7 +97,7 @@ export default function WorkloadBurnoutPage() {
     {
       key: "workload",
       label: "Workload",
-      render: (value) => (
+      render: (value: number) => (
         <div className="flex items-center gap-2">
           <div className="w-20 bg-gray-200 rounded-full h-2">
             <div
@@ -115,8 +115,8 @@ export default function WorkloadBurnoutPage() {
     {
       key: "burnoutRisk",
       label: "Burnout Risk",
-      render: (value) => {
-        const colors = {
+      render: (value: string) => {
+        const colors: Record<string, string> = {
           Low: "bg-green-100 text-green-700",
           Medium: "bg-yellow-100 text-yellow-700",
           High: "bg-red-100 text-red-700",
@@ -132,7 +132,7 @@ export default function WorkloadBurnoutPage() {
     {
       key: "status",
       label: "Status",
-      render: (value) => (
+      render: (value: string) => (
         <span className={`px-2 py-1 rounded text-xs font-medium ${
           value === "Overloaded" ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
         }`}>

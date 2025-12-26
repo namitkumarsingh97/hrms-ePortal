@@ -70,61 +70,75 @@ export default function CompensationEnginePage() {
   ];
 
   const columns = [
-    { key: "employeeId", label: "Emp ID" },
-    { key: "name", label: "Name" },
-    { key: "role", label: "Role" },
-    { key: "department", label: "Department" },
-    {
-      key: "currentSalary",
-      label: "Current Salary",
-      render: (value) => `₹${(value / 100000).toFixed(1)}L`,
-    },
-    {
-      key: "marketRate",
-      label: "Market Rate",
-      render: (value) => `₹${(value / 100000).toFixed(1)}L`,
-    },
-    {
-      key: "equity",
-      label: "Equity",
-      render: (value) => `₹${(value / 1000).toFixed(0)}K`,
-    },
-    {
-      key: "bonus",
-      label: "Bonus",
-      render: (value) => `₹${(value / 100000).toFixed(1)}L`,
-    },
-    {
-      key: "totalComp",
-      label: "Total Comp",
-      render: (value) => `₹${(value / 100000).toFixed(1)}L`,
-    },
-    {
-      key: "payGap",
-      label: "Pay Gap",
-      render: (value) => (
-        <span className={value < -5 ? "text-red-600 font-medium" : "text-yellow-600"}>
-          {value > 0 ? "+" : ""}{value.toFixed(1)}%
+  { key: "employeeId", label: "Emp ID" },
+  { key: "name", label: "Name" },
+  { key: "role", label: "Role" },
+  { key: "department", label: "Department" },
+
+  {
+    key: "currentSalary",
+    label: "Current Salary",
+    render: (value: number) => `₹${(value / 100000).toFixed(1)}L`,
+  },
+  {
+    key: "marketRate",
+    label: "Market Rate",
+    render: (value: number) => `₹${(value / 100000).toFixed(1)}L`,
+  },
+  {
+    key: "equity",
+    label: "Equity",
+    render: (value: number) => `₹${(value / 1000).toFixed(0)}K`,
+  },
+  {
+    key: "bonus",
+    label: "Bonus",
+    render: (value: number) => `₹${(value / 100000).toFixed(1)}L`,
+  },
+  {
+    key: "totalComp",
+    label: "Total Comp",
+    render: (value: number) => `₹${(value / 100000).toFixed(1)}L`,
+  },
+  {
+    key: "payGap",
+    label: "Pay Gap",
+    render: (value: number) => (
+      <span
+        className={
+          value < -5
+            ? "text-red-600 font-medium"
+            : "text-yellow-600"
+        }
+      >
+        {value > 0 ? "+" : ""}
+        {value.toFixed(1)}%
+      </span>
+    ),
+  },
+  {
+    key: "status",
+    label: "Status",
+    render: (value: string) => {
+      const colors: Record<string, string> = {
+        "Above Market": "bg-green-100 text-green-700",
+        "At Market": "bg-blue-100 text-blue-700",
+        "Below Market": "bg-red-100 text-red-700",
+      };
+
+      return (
+        <span
+          className={`px-2 py-1 rounded text-xs font-medium ${
+            colors[value] || "bg-gray-100 text-gray-700"
+          }`}
+        >
+          {value}
         </span>
-      ),
+      );
     },
-    {
-      key: "status",
-      label: "Status",
-      render: (value) => {
-        const colors = {
-          "Above Market": "bg-green-100 text-green-700",
-          "At Market": "bg-blue-100 text-blue-700",
-          "Below Market": "bg-red-100 text-red-700",
-        };
-        return (
-          <span className={`px-2 py-1 rounded text-xs font-medium ${colors[value] || "bg-gray-100 text-gray-700"}`}>
-            {value}
-          </span>
-        );
-      },
-    },
-  ];
+  },
+];
+
 
   return (
     <div className="p-4 md:p-6 space-y-6">

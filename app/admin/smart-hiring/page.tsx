@@ -99,7 +99,7 @@ export default function SmartHiringPage() {
     {
       key: "skills",
       label: "Required Skills",
-      render: (value) => (
+      render: (value: string[]) => (
         <div className="flex gap-1 flex-wrap max-w-xs">
           {value.slice(0, 3).map((skill, idx) => (
             <span key={idx} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
@@ -121,7 +121,7 @@ export default function SmartHiringPage() {
     {
       key: "status",
       label: "Status",
-      render: (value) => (
+      render: (value: string) => (
         <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded font-medium">
           {value}
         </span>

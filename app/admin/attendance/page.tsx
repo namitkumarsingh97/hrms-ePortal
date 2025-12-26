@@ -79,36 +79,43 @@ export default function AttendancePage() {
   ];
 
   const columns = [
-    { key: "employeeId", label: "Emp ID" },
-    { key: "name", label: "Name" },
-    { key: "role", label: "Role" },
-    { key: "department", label: "Department" },
-    { key: "checkIn", label: "Check In" },
-    { key: "checkOut", label: "Check Out" },
-    {
-      key: "hours",
-      label: "Hours",
-      render: (value) => (value > 0 ? `${value.toFixed(1)} hrs` : "-"),
+  { key: "employeeId", label: "Emp ID" },
+  { key: "name", label: "Name" },
+  { key: "role", label: "Role" },
+  { key: "department", label: "Department" },
+  { key: "checkIn", label: "Check In" },
+  { key: "checkOut", label: "Check Out" },
+  {
+    key: "hours",
+    label: "Hours",
+    render: (value: number) =>
+      value > 0 ? `${value.toFixed(1)} hrs` : "-",
+  },
+  {
+    key: "status",
+    label: "Status",
+    render: (value: string) => {
+      const colors: Record<string, string> = {
+        Present: "bg-green-100 text-green-700",
+        Absent: "bg-red-100 text-red-700",
+        Late: "bg-yellow-100 text-yellow-700",
+        "On Leave": "bg-blue-100 text-blue-700",
+      };
+
+      return (
+        <span
+          className={`px-2 py-1 rounded text-xs font-medium ${
+            colors[value] || "bg-gray-100 text-gray-700"
+          }`}
+        >
+          {value}
+        </span>
+      );
     },
-    {
-      key: "status",
-      label: "Status",
-      render: (value) => {
-        const colors = {
-          Present: "bg-green-100 text-green-700",
-          Absent: "bg-red-100 text-red-700",
-          Late: "bg-yellow-100 text-yellow-700",
-          "On Leave": "bg-blue-100 text-blue-700",
-        };
-        return (
-          <span className={`px-2 py-1 rounded text-xs font-medium ${colors[value] || "bg-gray-100 text-gray-700"}`}>
-            {value}
-          </span>
-        );
-      },
-    },
-    { key: "location", label: "Location" },
-  ];
+  },
+  { key: "location", label: "Location" },
+];
+
 
   return (
     <div className="p-4 md:p-6 space-y-6">

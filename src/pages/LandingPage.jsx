@@ -1,15 +1,17 @@
+"use client";
+
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const LandingPage = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleLoginClick = () => {
-    navigate("/login");
+    router.push("/login");
   };
 
   const handleGetStarted = () => {
-    navigate("/login");
+    router.push("/login");
   };
 
   return (

@@ -112,7 +112,7 @@ export default function PerformanceIntelligencePage() {
     {
       key: "currentRating",
       label: "Rating",
-      render: (value) => (
+      render: (value: number) => (
         <div className="flex items-center gap-2">
           <span className="font-semibold">{value.toFixed(1)}</span>
           <div className="flex">
@@ -129,7 +129,7 @@ export default function PerformanceIntelligencePage() {
     {
       key: "codeQuality",
       label: "Code Quality",
-      render: (value) => (
+      render: (value: number) => (
         <span className={value >= 90 ? "text-green-600 font-medium" : value >= 80 ? "text-blue-600" : "text-orange-600"}>
           {value}%
         </span>
@@ -138,13 +138,13 @@ export default function PerformanceIntelligencePage() {
     {
       key: "peerScore",
       label: "Peer Score",
-      render: (value) => value.toFixed(1),
+      render: (value: number) => value.toFixed(1),
     },
     {
       key: "status",
       label: "Status",
-      render: (value) => {
-        const colors = {
+      render: (value: string) => {
+        const colors: Record<string, string> = {
           "Top Performer": "bg-purple-100 text-purple-700",
           "High Performer": "bg-green-100 text-green-700",
           "Meets Expectations": "bg-blue-100 text-blue-700",

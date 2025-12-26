@@ -76,7 +76,7 @@ export default function TalentMarketplacePage() {
     {
       key: "skills",
       label: "Skills",
-      render: (value) => (
+      render: (value: string[]) => (
         <div className="flex gap-1 flex-wrap">
           {value.map((skill, idx) => (
             <span key={idx} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
@@ -90,7 +90,7 @@ export default function TalentMarketplacePage() {
     {
       key: "status",
       label: "Status",
-      render: (value) => (
+      render: (value: string) => (
         <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded font-medium">
           {value}
         </span>
@@ -99,7 +99,7 @@ export default function TalentMarketplacePage() {
     {
       key: "postedDate",
       label: "Posted",
-      render: (value) => new Date(value).toLocaleDateString(),
+      render: (value: string | number | Date) => new Date(value).toLocaleDateString(),
     },
   ];
 

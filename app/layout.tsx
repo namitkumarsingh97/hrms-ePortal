@@ -14,7 +14,12 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [userInfo, setUserInfo] = useState({
+  const [userInfo, setUserInfo] = useState<{
+    name: string;
+    role: string;
+    companyName: string;
+    companyId: string | null;
+  }>({
     name: "",
     role: "",
     companyName: "",
