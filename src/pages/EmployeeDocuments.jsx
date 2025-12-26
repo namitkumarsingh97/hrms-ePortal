@@ -29,8 +29,8 @@ const EmployeeDocuments = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md">
-      <h1 className="text-2xl font-bold mb-4 text-[#f7941e]">My Documents</h1>
+    <div className="bg-white p-4 md:p-6 rounded-2xl shadow-md">
+      <h1 className="text-xl md:text-2xl font-bold mb-4 text-[#f7941e]">My Documents</h1>
 
       <div className="mb-6">
         <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -44,44 +44,48 @@ const EmployeeDocuments = () => {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold mb-2">Uploaded Documents</h2>
+        <h2 className="text-base md:text-lg font-semibold mb-2">Uploaded Documents</h2>
         {documents.length === 0 ? (
-          <p className="text-gray-500 text-sm">No documents uploaded yet.</p>
+          <p className="text-gray-500 text-xs md:text-sm">No documents uploaded yet.</p>
         ) : (
-          <table className="w-full text-left border">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-4 py-2">Document Name</th>
-                <th className="px-4 py-2">Uploaded On</th>
-                <th className="px-4 py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {documents.map((doc, index) => (
-                <tr key={index} className="border-t">
-                  <td className="px-4 py-2">{doc.name}</td>
-                  <td className="px-4 py-2">{doc.uploadedOn}</td>
-                  <td className="px-4 py-2 space-x-2">
-                    <a
-                      href={doc.url}
-                      download
-                      className="text-blue-600 hover:underline text-sm"
-                    >
-                      Download
-                    </a>
-                    <button
-                      onClick={() =>
-                        setDocuments(documents.filter((_, i) => i !== index))
-                      }
-                      className="text-red-600 hover:underline text-sm"
-                    >
-                      Delete
-                    </button>
-                  </td>
+          <div className="overflow-x-auto -mx-4 md:mx-0">
+            <table className="w-full text-left border text-xs md:text-sm min-w-full">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="px-3 md:px-4 py-2 text-xs md:text-sm">Document Name</th>
+                  <th className="px-3 md:px-4 py-2 text-xs md:text-sm">Uploaded On</th>
+                  <th className="px-3 md:px-4 py-2 text-xs md:text-sm">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {documents.map((doc, index) => (
+                  <tr key={index} className="border-t">
+                    <td className="px-3 md:px-4 py-2 text-xs md:text-sm">{doc.name}</td>
+                    <td className="px-3 md:px-4 py-2 text-xs md:text-sm">{doc.uploadedOn}</td>
+                    <td className="px-3 md:px-4 py-2">
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <a
+                          href={doc.url}
+                          download
+                          className="text-blue-600 hover:underline text-xs md:text-sm"
+                        >
+                          Download
+                        </a>
+                        <button
+                          onClick={() =>
+                            setDocuments(documents.filter((_, i) => i !== index))
+                          }
+                          className="text-red-600 hover:underline text-xs md:text-sm"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

@@ -1,60 +1,83 @@
+"use client";
+
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaUserTie, FaUser } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { FaUserTie, FaUser, FaGlobe } from "react-icons/fa";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [role, setRole] = useState("admin");
   const [employeeId, setEmployeeId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    if (
-      role === "admin" &&
-      employeeId === "EMP0001" &&
-      password === "admin@123"
-    ) {
-      localStorage.setItem("role", "admin");
-      navigate("/admin/dashboard");
-    } else if (
-      role === "employee" &&
-      employeeId === "EMP0921" &&
-      password === "emp@123"
-    ) {
-      localStorage.setItem("role", "employee");
-      navigate("/employee/dashboard");
-    } else {
-      setError("Invalid credentials. Please try again.");
+  const handleLogin = async () => {
+    setError("");
+    
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ employeeId, password, role }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Store user info in localStorage
+        localStorage.setItem("role", data.user.role);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("employeeId", data.user.employeeId);
+        localStorage.setItem("companyId", data.user.companyId);
+        localStorage.setItem("companyName", data.user.companyName);
+
+        // Redirect based on role
+        if (data.user.role === "global_admin" || data.user.role === "admin") {
+          router.push("/admin/dashboard");
+        } else {
+          router.push("/employee/dashboard");
+        }
+      } else {
+        setError(data.message || "Invalid credentials. Please try again.");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Unable to connect to server. Please try again later.");
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       {/* Header/Navbar */}
-      <header className="bg-black text-white p-4 flex justify-between items-center">
+      <header className="bg-black text-white p-4 md:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <h1
-          className="text-xl font-bold text-[#f7941e] cursor-pointer"
-          onClick={() => navigate("/")}
+          className="text-lg md:text-xl font-bold text-[#f7941e] cursor-pointer"
+          onClick={() => router.push("/")}
         >
           NeuroHR
         </h1>
-        <span className="text-sm text-white/70">Smarter HR, Happier Teams</span>
+        <span className="text-xs md:text-sm text-white/70">Smarter HR, Happier Teams</span>
       </header>
 
       {/* Centered Login Card */}
-      <div className="flex-grow flex items-center justify-center px-4">
-        <div className="bg-white p-8 rounded shadow-md w-full max-w-md space-y-6">
+      <div className="flex-grow flex items-center justify-center px-4 py-8">
+        <div className="bg-white p-6 md:p-8 rounded shadow-md w-full max-w-md space-y-4 md:space-y-6">
           {/* Avatar Icon */}
           <div className="flex justify-center">
-            {role === "admin" ? (
+            {role === "global_admin" ? (
+              <FaGlobe className="text-4xl text-[#f7941e]" />
+            ) : role === "admin" ? (
               <FaUserTie className="text-4xl text-[#f7941e]" />
             ) : (
               <FaUser className="text-4xl text-[#f7941e]" />
             )}
           </div>
 
-          <h2 className="text-2xl font-bold text-center">E-HRMS Portal Login</h2>
+          <h2 className="text-2xl font-bold text-center">
+            E-HRMS Portal Login
+          </h2>
 
           {/* Role Select */}
           <div>
@@ -64,6 +87,7 @@ export default function Login() {
               onChange={(e) => setRole(e.target.value)}
               className="w-full border rounded px-3 py-2"
             >
+              <option value="global_admin">Global Admin</option>
               <option value="admin">Admin / HR</option>
               <option value="employee">Employee</option>
             </select>
@@ -103,6 +127,13 @@ export default function Login() {
 
           {/* Error */}
           {error && <p className="text-red-500 text-sm">{error}</p>}
+
+          {/* Error Message */}
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded text-sm">
+              {error}
+            </div>
+          )}
 
           {/* Login Button */}
           <button

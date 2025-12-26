@@ -26,13 +26,13 @@ export default function Employees() {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Employees</h1>
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-xl md:text-2xl font-bold">Employees</h1>
         <input
           type="text"
           placeholder="Search by name or role"
-          className="border px-4 py-2 rounded w-64"
+          className="border px-4 py-2 rounded w-full sm:w-64"
         />
       </div>
 

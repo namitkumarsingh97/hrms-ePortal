@@ -60,11 +60,11 @@ export default function EmployeePayroll() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">My Payroll</h1>
+      <h1 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">My Payroll</h1>
 
-      <div className="mb-6 p-4 bg-white shadow rounded-xl">
-        <h2 className="text-xl font-semibold mb-2">Choose Tax Regime</h2>
-        <div className="flex gap-4 mb-4">
+      <div className="mb-4 md:mb-6 p-4 bg-white shadow rounded-xl">
+        <h2 className="text-lg md:text-xl font-semibold mb-2">Choose Tax Regime</h2>
+        <div className="flex flex-col sm:flex-row gap-4 mb-4">
           <label className="flex items-center gap-2">
             <input
               type="radio"
@@ -87,62 +87,66 @@ export default function EmployeePayroll() {
           </label>
         </div>
 
-        <table className="min-w-full bg-gray-50 border rounded-md">
-          <thead className="bg-[#f7941e] text-white">
-            <tr>
-              <th className="px-4 py-2 text-left">Income Slab</th>
-              <th className="px-4 py-2 text-left">Tax Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {selectedRegime.map((item, index) => (
-              <tr key={index} className="border-t">
-                <td className="px-4 py-2">{item.slab}</td>
-                <td className="px-4 py-2">{item.rate}</td>
+        <div className="overflow-x-auto -mx-4 md:mx-0">
+          <table className="min-w-full bg-gray-50 border rounded-md">
+            <thead className="bg-[#f7941e] text-white">
+              <tr>
+                <th className="px-3 md:px-4 py-2 text-left text-xs md:text-sm">Income Slab</th>
+                <th className="px-3 md:px-4 py-2 text-left text-xs md:text-sm">Tax Rate</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {selectedRegime.map((item, index) => (
+                <tr key={index} className="border-t">
+                  <td className="px-3 md:px-4 py-2 text-xs md:text-sm">{item.slab}</td>
+                  <td className="px-3 md:px-4 py-2 text-xs md:text-sm">{item.rate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded-xl shadow-md">
-          <thead>
-            <tr className="bg-[#f7941e] text-white text-left">
-              <th className="px-4 py-3">Month</th>
-              <th className="px-4 py-3">Base Salary</th>
-              <th className="px-4 py-3">Bonus</th>
-              <th className="px-4 py-3">Deductions</th>
-              <th className="px-4 py-3">Net Pay</th>
-              <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3">Payslip</th>
-            </tr>
-          </thead>
-          <tbody>
-            {payrollData.map((item, index) => (
-              <tr key={index} className="border-t hover:bg-gray-50">
-                <td className="px-4 py-3">{item.month}</td>
-                <td className="px-4 py-3">₹{item.baseSalary}</td>
-                <td className="px-4 py-3">₹{item.bonus}</td>
-                <td className="px-4 py-3">₹{item.deductions}</td>
-                <td className="px-4 py-3 font-semibold">₹{item.netPay}</td>
-                <td className="px-4 py-3">
-                  <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
-                    {item.status}
-                  </span>
-                </td>
-                <td className="px-4 py-3">
-                  <button
-                    onClick={() => handleDownload(item.month)}
-                    className="bg-[#f7941e] text-white px-3 py-1 rounded text-sm hover:bg-orange-600"
-                  >
-                    Download
-                  </button>
-                </td>
+      <div className="overflow-x-auto -mx-4 md:mx-0">
+        <div className="inline-block min-w-full align-middle">
+          <table className="min-w-full bg-white rounded-xl shadow-md">
+            <thead>
+              <tr className="bg-[#f7941e] text-white text-left">
+                <th className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">Month</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">Base Salary</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">Bonus</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">Deductions</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">Net Pay</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">Status</th>
+                <th className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">Payslip</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {payrollData.map((item, index) => (
+                <tr key={index} className="border-t hover:bg-gray-50">
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">{item.month}</td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">₹{item.baseSalary}</td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">₹{item.bonus}</td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm">₹{item.deductions}</td>
+                  <td className="px-3 md:px-4 py-2 md:py-3 font-semibold text-xs md:text-sm">₹{item.netPay}</td>
+                  <td className="px-3 md:px-4 py-2 md:py-3">
+                    <span className="px-2 md:px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs md:text-sm">
+                      {item.status}
+                    </span>
+                  </td>
+                  <td className="px-3 md:px-4 py-2 md:py-3">
+                    <button
+                      onClick={() => handleDownload(item.month)}
+                      className="bg-[#f7941e] text-white px-2 md:px-3 py-1 rounded text-xs md:text-sm hover:bg-orange-600"
+                    >
+                      Download
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

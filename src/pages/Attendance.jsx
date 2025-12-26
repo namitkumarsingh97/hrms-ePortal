@@ -2,36 +2,37 @@ import React from "react";
 
 export default function Attendance() {
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Attendance</h1>
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-xl md:text-2xl font-bold">Attendance</h1>
 
-        <div className="flex space-x-4">
-          <select className="border rounded px-4 py-2">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-auto">
+          <select className="border rounded px-3 py-2 text-sm md:text-base w-full sm:w-auto">
             <option>All Employees</option>
             <option>John Doe</option>
             <option>Jane Smith</option>
           </select>
 
-          <input type="month" className="border rounded px-4 py-2" />
+          <input type="month" className="border rounded px-3 py-2 text-sm md:text-base w-full sm:w-auto" />
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         <Card title="Working Days" value="22" />
         <Card title="Present" value="18" />
         <Card title="Absent" value="2" />
         <Card title="Leave" value="2" />
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow rounded">
-          <thead>
-            <tr className="bg-gray-200 text-left">
-              <th className="p-3">Date</th>
-              <th className="p-3">Status</th>
-            </tr>
-          </thead>
+      <div className="overflow-x-auto -mx-4 md:mx-0">
+        <div className="inline-block min-w-full align-middle">
+          <table className="min-w-full bg-white shadow rounded">
+            <thead>
+              <tr className="bg-gray-200 text-left">
+                <th className="p-3 text-sm md:text-base">Date</th>
+                <th className="p-3 text-sm md:text-base">Status</th>
+              </tr>
+            </thead>
           <tbody>
             {[
               { date: "2025-07-01", status: "Present" },
@@ -39,7 +40,7 @@ export default function Attendance() {
               { date: "2025-07-03", status: "Leave" },
             ].map((item, i) => (
               <tr key={i} className="border-t">
-                <td className="p-3">{item.date}</td>
+                <td className="p-3 text-sm md:text-base">{item.date}</td>
                 <td className="p-3">
                   <span
                     className={`px-2 py-1 rounded text-sm ${
@@ -57,6 +58,7 @@ export default function Attendance() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

@@ -2,12 +2,12 @@ import React from "react";
 
 export default function Settings() {
   return (
-    <div className="space-y-8 max-w-3xl">
-      <h1 className="text-2xl font-bold">Employee Information</h1>
+    <div className="space-y-6 md:space-y-8 max-w-3xl">
+      <h1 className="text-xl md:text-2xl font-bold">Employee Information</h1>
 
       {/* Personal Info */}
-      <section className="bg-white shadow rounded p-6 space-y-4">
-        <h2 className="text-lg font-semibold border-b pb-2">Personal Info</h2>
+      <section className="bg-white shadow rounded p-4 md:p-6 space-y-4">
+        <h2 className="text-base md:text-lg font-semibold border-b pb-2">Personal Info</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -59,8 +59,8 @@ export default function Settings() {
       </section>
 
       {/* Job Info */}
-      <section className="bg-white shadow rounded p-6 space-y-4">
-        <h2 className="text-lg font-semibold border-b pb-2">Job Details</h2>
+      <section className="bg-white shadow rounded p-4 md:p-6 space-y-4">
+        <h2 className="text-base md:text-lg font-semibold border-b pb-2">Job Details</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -113,8 +113,8 @@ export default function Settings() {
       </section>
 
       {/* Address Info */}
-      <section className="bg-white shadow rounded p-6 space-y-4">
-        <h2 className="text-lg font-semibold border-b pb-2">Address</h2>
+      <section className="bg-white shadow rounded p-4 md:p-6 space-y-4">
+        <h2 className="text-base md:text-lg font-semibold border-b pb-2">Address</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
@@ -159,7 +159,7 @@ export default function Settings() {
 
       {/* Save Button */}
       <div>
-        <button className="bg-[#f7941e] text-white px-6 py-2 rounded hover:bg-orange-600 transition">
+        <button className="w-full sm:w-auto bg-[#f7941e] text-white px-6 py-2 rounded hover:bg-orange-600 transition text-sm md:text-base">
           Save Employee Info
         </button>
       </div>

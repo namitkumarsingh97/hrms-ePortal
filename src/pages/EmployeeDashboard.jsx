@@ -4,10 +4,10 @@ import TaskItem from "../components/TaskItem";
 
 export default function EmployeeDashboard() {
   return (
-    <div className="space-y-8">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold">Hi, Namit</h1>
-        <p className="text-gray-600">
+    <div className="space-y-6 md:space-y-8">
+      <div className="mb-4 md:mb-6">
+        <h1 className="text-2xl md:text-3xl font-bold">Hi, Namit</h1>
+        <p className="text-sm md:text-base text-gray-600">
           Here's a quick look at your account today.
         </p>
       </div>
@@ -34,8 +34,8 @@ export default function EmployeeDashboard() {
         />
       </div>
 
-      <div className="bg-white p-6 rounded-xl shadow-md">
-        <h2 className="text-xl font-bold mb-4">Your Tasks Today</h2>
+      <div className="bg-white p-4 md:p-6 rounded-xl shadow-md">
+        <h2 className="text-lg md:text-xl font-bold mb-4">Your Tasks Today</h2>
         <ul className="space-y-3">
           <TaskItem
             task="Submit Expense Report"
@@ -55,9 +55,9 @@ export default function EmployeeDashboard() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-xl shadow-md">
-        <h2 className="text-xl font-bold mb-4">My Profile</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+      <div className="bg-white p-4 md:p-6 rounded-xl shadow-md">
+        <h2 className="text-lg md:text-xl font-bold mb-4">My Profile</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm md:text-base">
           <div>
             <span className="text-gray-500">Name</span>
             <p className="font-medium">Namit Singh</p>
